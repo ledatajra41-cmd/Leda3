@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira das Profissões — Técnico em Vendas | Centro Educa Mais Leda Tajra</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        leda: {
+                            blue: '#0b66b2',
+                            dark: '#063d6e',
+                            royal: '#0A66C2',
+                            light: '#EFF6FF',
+                            gold: '#d4af37',
+                            goldLight: '#FDE047'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: #ffffff;
+            color: #0F172A;
+        }
+
+        /* Tela de abertura (Splash Screen) */
+        #splash-screen {
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out, visibility 0.7s;
+        }
+        #splash-screen.hidden-splash {
+            opacity: 0;
+            transform: scale(1.04);
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Animação de surgimento ao rolar */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 80% 20%, #147cd1 0%, #0b66b2 48%, #063d6e 100%);
+        }
+
+        .gold-ring {
+            box-shadow: 0 0 0 3px #d4af37, 0 10px 25px rgba(6, 61, 110, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-leda-blue selection:text-white">
+
+    <!-- ===================================================================== -->
+    <!-- 1. TELA DE ENTRADA (SPLASH SCREEN COM A LOGO DA ESCOLA)               -->
+    <!-- ===================================================================== -->
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#063d6e] via-[#0b66b2] to-[#042a4d] text-white px-6 text-center">
+        <div class="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 flex flex-col items-center max-w-lg">
+            <!-- Logo de Entrada -->
+            <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden gold-ring mb-6 bg-[#0b66b2] flex items-center justify-center animate-float">
+                <img src="image_60f8a9.png" 
+                     alt="Logo Centro Educa Mais Leda Tajra" 
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://placehold.co/300x300/0b66b2/FFFFFF?text=EDUCA+MAIS+LEDA+TAJRA'">
+            </div>
+
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs sm:text-sm font-semibold tracking-wider uppercase text-yellow-300 mb-3">
+                Feira das Profissões
+            </span>
+
+            <h1 class="font-display text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-2">
+                CENTRO EDUCA MAIS<br>
+                <span class="text-yellow-300">LEDA TAJRA</span>
+            </h1>
+            <p class="text-blue-100 text-sm sm:text-base mb-8">
+                Santa Helena - MA • Cursos Técnicos • Foco: <strong>Técnico em Vendas</strong>
+            </p>
+
+            <div class="w-56 h-1.5 bg-white/20 rounded-full overflow-hidden mb-5">
+                <div id="splash-progress" class="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out" style="width: 15%;"></div>
+            </div>
+
+            <button onclick="closeSplash()" class="px-7 py-3 rounded-full bg-white text-leda-dark font-display font-bold text-sm sm:text-base shadow-xl hover:bg-yellow-300 hover:text-slate-900 transition-all transform hover:scale-105 cursor-pointer flex items-center gap-2">
+                <span>Entrar na Apresentação</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 2. CABEÇALHO FIXO COM LOGO CLICÁVEL (GOOGLE MAPS OU INSTAGRAM)         -->
+    <!-- ===================================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-blue-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            
+            <!-- LOGO FIXA NO CANTO SUPERIOR ESQUERDO COM MENU DE ACESSO RÁPIDO -->
+            <div class="relative">
+                <button id="logo-action-btn" onclick="toggleLogoMenu()" aria-label="Abrir opções da escola: Mapa ou Instagram"
+                    class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none">
+                    <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-leda-gold shadow-md bg-[#0b66b2] shrink-0 group-hover:scale-105 transition-transform">
+                        <img src="image_60f8a9.png" 
+                             alt="Brasão Centro Educa Mais Leda Tajra" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/150x150/0b66b2/FFFFFF?text=LEDA+TAJRA'">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-xs sm:text-sm md:text-base text-leda-dark leading-tight tracking-tight flex items-center gap-1.5">
+                            <span>CENTRO EDUCA MAIS LEDA TAJRA</span>
+                            <i class="fa-solid fa-caret-down text-leda-blue text-xs"></i>
+                        </span>
+                        <span class="text-[11px] sm:text-xs font-semibold text-leda-blue flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-leda-gold inline-block"></span>
+                            Clique na logo: Localização ou Instagram
+                        </span>
+                    </div>
+                </button>
+
+                <!-- MENU DROPDOWN AO CLICAR NA LOGO (GOOGLE MAPS OU INSTAGRAM) -->
+                <div id="logo-dropdown" class="hidden absolute left-0 mt-3 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border-2 border-blue-100 p-4 z-50">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div>
+                            <p class="font-display font-bold text-xs text-leda-dark uppercase">Acesso Rápido da Escola</p>
+                            <p class="text-[11px] text-slate-500">Santa Helena - MA</p>
+                        </div>
+                        <button onclick="toggleLogoMenu()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs cursor-pointer">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <!-- Opção 1: Google Maps -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=Centro+Educa+Mais+Leda+Tajra+Santa+Helena+MA" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-3 p-3 rounded-xl bg-blue-50 hover:bg-leda-blue text-leda-dark hover:text-white transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-white text-leda-blue flex items-center justify-center shrink-0 shadow-sm">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-display font-bold text-sm">Ver Localização no Google Maps</p>
+                                <p class="text-xs opacity-80">Abrir rota até o prédio da escola</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70"></i>
+                        </a>
+
+                        <!-- Opção 2: Instagram Oficial -->
+                        <a href="https://www.instagram.com/educamaisledatajra?bqrl=MWpkbnEyemZrbmp1aA==" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 text-slate-800 hover:text-white transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-white text-pink-600 flex items-center justify-center shrink-0 shadow-sm">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-display font-bold text-sm">Instagram Oficial da Escola</p>
+                                <p class="text-xs opacity-80">@educamaisledatajra</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70"></i>
+                        </a>
+
+                        <!-- Link Alternativo Bing enviado -->
+                        <a href="https://www.bing.com/search?q=centro+educa+mais+leda+tajra&form=EX0050&refig=6b0249041d2948b1b371f4e25c281a68&pc=U531#&shtp=GetUrl&shid=ddb8354c-0e41-4c73-a929-3a7a56e97e39" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="block text-center text-[11px] font-semibold text-leda-blue hover:underline pt-1">
+                            <i class="fa-solid fa-magnifying-glass mr-1"></i> Abrir referência de busca do prédio (Bing)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MENU DE NAVEGAÇÃO DESKTOP -->
+            <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold text-slate-700">
+                <a href="#o-que-e" class="hover:text-leda-blue transition-colors">O que é & Para que serve</a>
+                <a href="#identificacao" class="hover:text-leda-blue transition-colors">Você se identifica?</a>
+                <a href="#motivos-portas" class="hover:text-leda-blue transition-colors">Motivos & Atuação</a>
+                <a href="#localizacao" class="hover:text-leda-blue transition-colors">Localização</a>
+                <a href="#jogo-vendas" class="px-4 py-2.5 rounded-full bg-leda-blue text-white hover:bg-leda-dark transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad text-yellow-300"></i>
+                    <span>Desafio do Negociador</span>
+                </a>
+            </nav>
+
+            <!-- BOTÃO MENU MOBILE -->
+            <div class="flex items-center gap-2 lg:hidden">
+                <a href="#jogo-vendas" class="px-3 py-2 rounded-full bg-leda-blue text-white text-xs font-bold shadow">
+                    <i class="fa-solid fa-gamepad mr-1 text-yellow-300"></i>Jogo
+                </a>
+                <button id="mobile-menu-btn" aria-label="Abrir menu" class="p-2.5 rounded-xl bg-blue-50 text-leda-blue hover:bg-blue-100">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MENU DROPDOWN MOBILE -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-blue-100 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#o-que-e" class="block py-2 text-sm font-semibold text-slate-700 hover:text-leda-blue">1. O que é o curso e para que serve</a>
+            <a href="#identificacao" class="block py-2 text-sm font-semibold text-slate-700 hover:text-leda-blue">2. Você se identifica com isso?</a>
+            <a href="#motivos-portas" class="block py-2 text-sm font-semibold text-slate-700 hover:text-leda-blue">3. Motivos reais e áreas de atuação</a>
+            <a href="#localizacao" class="block py-2 text-sm font-semibold text-slate-700 hover:text-leda-blue">4. Onde fica a escola</a>
+            <a href="#jogo-vendas" class="block py-2 text-sm font-bold text-leda-blue">5. Jogo: Desafio do Negociador</a>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 3. CAPA: PANORAMA DOS CURSOS DA ESCOLA & DESTAQUE TÉCNICO EM VENDAS   -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="hero-gradient pt-32 pb-20 lg:pt-36 lg:pb-24 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-xs sm:text-sm font-semibold text-yellow-300">
+                        <i class="fa-solid fa-school"></i>
+                        <span>FEIRA DAS PROFISSÕES • CURSOS TÉCNICOS INTEGRADOS</span>
+                    </div>
+
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                        Curso Técnico em <span class="text-yellow-300">Vendas</span>
+                        <span class="block text-xl sm:text-2xl lg:text-3xl font-bold text-blue-100 mt-3">
+                            Entenda na prática como funciona, para que serve e onde você pode atuar.
+                        </span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        No <strong>Centro Educa Mais Leda Tajra</strong>, os cursos técnicos preparam o estudante com habilidades práticas ainda durante o Ensino Médio. Nesta apresentação, vamos mostrar por dentro como funciona a formação em <strong>Vendas</strong> — sem exageros, direto ao ponto.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#o-que-e" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white text-leda-dark font-display font-bold text-base shadow-xl hover:bg-yellow-300 hover:text-slate-900 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <span>Conhecer o Curso na Prática</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </a>
+                        <a href="#jogo-vendas" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-leda-dark/70 hover:bg-leda-dark text-white border border-white/30 font-display font-bold text-base backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gamepad text-yellow-300"></i>
+                            <span>Jogar o Quiz Final</span>
+                        </a>
+                    </div>
+
+                    <!-- Resumo objetivo dos pilares -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/15 max-w-xl mx-auto lg:mx-0">
+                        <div>
+                            <div class="font-display text-lg sm:text-xl font-extrabold text-yellow-300">Negociação</div>
+                            <div class="text-xs text-blue-100">Argumentação e acordos</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-lg sm:text-xl font-extrabold text-white">Digital</div>
+                            <div class="text-xs text-blue-100">E-commerce e redes</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-lg sm:text-xl font-extrabold text-yellow-300">Gestão</div>
+                            <div class="text-xs text-blue-100">Estoque, preço e cliente</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ilustração Vetorial 1: Estratégia Comercial e Negociação -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md animate-float">
+                        <div class="relative bg-white/10 backdrop-blur-md border border-white/25 rounded-3xl p-6 shadow-2xl">
+                            <svg viewBox="0 0 420 350" class="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="20" width="380" height="290" rx="24" fill="#FFFFFF"/>
+                                <rect x="20" y="20" width="380" height="44" rx="24" fill="#EFF6FF"/>
+                                <circle cx="48" cy="42" r="6" fill="#0b66b2"/>
+                                <circle cx="68" cy="42" r="6" fill="#60A5FA"/>
+                                <circle cx="88" cy="42" r="6" fill="#d4af37"/>
+                                
+                                <!-- Ilustração de Mesa de Negociação / Estratégia -->
+                                <rect x="52" y="195" width="36" height="80" rx="8" fill="#BFDBFE"/>
+                                <rect x="104" y="160" width="36" height="115" rx="8" fill="#60A5FA"/>
+                                <rect x="156" y="125" width="36" height="150" rx="8" fill="#0b66b2"/>
+                                <rect x="208" y="90" width="36" height="185" rx="8" fill="#063d6e"/>
+                                
+                                <!-- Linha de Meta Dourada -->
+                                <path d="M65 182 L120 148 L174 112 L228 76" stroke="#d4af37" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="228" cy="76" r="9" fill="#FACC15" stroke="#063d6e" stroke-width="3"/>
+
+                                <!-- Card de Acordo Fechado -->
+                                <rect x="242" y="138" width="138" height="92" rx="16" fill="#0b66b2"/>
+                                <circle cx="275" cy="172" r="16" fill="#FACC15"/>
+                                <path d="M268 172L273 177L283 167" stroke="#063d6e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="300" y="162" width="64" height="8" rx="4" fill="#FFFFFF"/>
+                                <rect x="300" y="177" width="46" height="6" rx="3" fill="#93C5FD"/>
+                                <rect x="258" y="202" width="106" height="10" rx="5" fill="#063d6e"/>
+
+                                <!-- Faixa Inferior -->
+                                <rect x="45" y="294" width="330" height="36" rx="18" fill="#FACC15"/>
+                                <text x="210" y="317" text-anchor="middle" fill="#063d6e" font-family="Poppins, sans-serif" font-weight="800" font-size="13">
+                                    ESTRATÉGIA • COMUNICAÇÃO • MERCADO
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. O QUE É O CURSO E PARA QUE SERVE NA PRÁTICA                        -->
+    <!-- ===================================================================== -->
+    <section id="o-que-e" class="py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
+                
+                <!-- Ilustração Vetorial 2: Ferramentas do Técnico em Vendas -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="bg-blue-50/80 border-2 border-blue-100 rounded-3xl p-6 sm:p-8 shadow-lg">
+                        <svg viewBox="0 0 380 320" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Smartphone / Painel Comercial -->
+                            <rect x="115" y="18" width="150" height="275" rx="24" fill="#FFFFFF" stroke="#0b66b2" stroke-width="5"/>
+                            <rect x="165" y="30" width="50" height="6" rx="3" fill="#CBD5E1"/>
+                            
+                            <!-- Bloco Superior: Perfil do Cliente -->
+                            <rect x="132" y="50" width="116" height="62" rx="12" fill="#EFF6FF"/>
+                            <circle cx="160" cy="81" r="15" fill="#0b66b2"/>
+                            <circle cx="160" cy="77" r="5" fill="#FFFFFF"/>
+                            <path d="M150 91C150 86 154 84 160 84C166 84 170 86 170 91" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="184" y="70" width="50" height="8" rx="4" fill="#0b66b2"/>
+                            <rect x="184" y="84" width="38" height="6" rx="3" fill="#93C5FD"/>
+
+                            <!-- Bloco Central: Funil e Estoque -->
+                            <rect x="132" y="124" width="116" height="82" rx="12" fill="#063d6e"/>
+                            <path d="M148 182L174 160L198 170L232 140" stroke="#FACC15" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="232" cy="140" r="5" fill="#FFFFFF"/>
+                            <text x="190" y="198" text-anchor="middle" fill="#BFDBFE" font-family="Inter, sans-serif" font-size="10" font-weight="600">ANÁLISE DE DADOS</text>
+
+                            <!-- Botão Inferior -->
+                            <rect x="132" y="220" width="116" height="36" rx="18" fill="#FACC15"/>
+                            <text x="190" y="243" text-anchor="middle" fill="#063d6e" font-family="Poppins, sans-serif" font-weight="800" font-size="11">SOLUÇÃO ENTREGUE</text>
+
+                            <!-- Etiquetas Laterais -->
+                            <rect x="15" y="75" width="88" height="36" rx="12" fill="#0b66b2"/>
+                            <text x="59" y="97" text-anchor="middle" fill="#FFFFFF" font-family="Poppins, sans-serif" font-weight="700" font-size="11">MARKETING</text>
+
+                            <rect x="277" y="95" width="88" height="36" rx="12" fill="#063d6e"/>
+                            <text x="321" y="117" text-anchor="middle" fill="#FACC15" font-family="Poppins, sans-serif" font-weight="700" font-size="11">ESTOQUE</text>
+
+                            <rect x="15" y="200" width="88" height="36" rx="12" fill="#063d6e"/>
+                            <text x="59" y="222" text-anchor="middle" fill="#FFFFFF" font-family="Poppins, sans-serif" font-weight="700" font-size="11">CRM</text>
+
+                            <rect x="277" y="215" width="88" height="36" rx="12" fill="#0b66b2"/>
+                            <text x="321" y="237" text-anchor="middle" fill="#FFFFFF" font-family="Poppins, sans-serif" font-weight="700" font-size="11">NEGOCIAÇÃO</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Explicação Direta (Lado Direito) -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-leda-blue font-bold text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-book-open text-leda-gold"></i>
+                        <span>01. O que é e para que serve</span>
+                    </div>
+
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        O que é o curso <span class="text-leda-blue">Técnico em Vendas</span> e para que ele serve?
+                    </h2>
+
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        É uma formação profissional que ensina a <strong>planejar, executar e gerenciar processos comerciais</strong> do início ao fim. O curso serve para transformar a intuição de "tentar vender algo" em método técnico: você aprende como o consumidor pensa, como calcular preços, organizar estoque e fechar negociações de forma ética e eficiente.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-blue-100">
+                            <h3 class="font-display font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+                                <i class="fa-solid fa-brain text-leda-blue"></i>
+                                <span>Comportamento do Consumidor</span>
+                            </h3>
+                            <p class="text-sm text-slate-600">Entender o que leva uma pessoa a decidir por uma compra e como responder às dúvidas dela com segurança.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-blue-100">
+                            <h3 class="font-display font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+                                <i class="fa-solid fa-bullhorn text-leda-blue"></i>
+                                <span>Marketing Digital & Redes</span>
+                            </h3>
+                            <p class="text-sm text-slate-600">Criar vitrines virtuais, usar WhatsApp Business, Instagram e marketplaces para atrair clientes reais.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-blue-100">
+                            <h3 class="font-display font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+                                <i class="fa-solid fa-boxes-stacked text-leda-blue"></i>
+                                <span>Logística e Controle de Estoque</span>
+                            </h3>
+                            <p class="text-sm text-slate-600">Evitar que falte produto na hora da venda ou que mercadorias fiquem paradas gerando prejuízo.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-blue-100">
+                            <h3 class="font-display font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+                                <i class="fa-solid fa-handshake-simple text-leda-blue"></i>
+                                <span>Técnicas de Negociação e Pós-Venda</span>
+                            </h3>
+                            <p class="text-sm text-slate-600">Lidar com objeções de preço, apresentar propostas claras e manter o cliente satisfeito após a entrega.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. PONTOS DE IDENTIFICAÇÃO (VOCÊ SE IDENTIFICA COM ISSO?)             -->
+    <!-- ===================================================================== -->
+    <section id="identificacao" class="py-20 lg:py-24 bg-gradient-to-b from-blue-50/80 to-white border-y border-blue-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-leda-blue/10 text-leda-blue font-bold text-xs uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>02. Pontos de Identificação</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+                    Será que esse curso combina com você?
+                </h2>
+                <p class="text-slate-600 text-base sm:text-lg">
+                    Muita gente já pratica habilidades de vendas no cotidiano sem perceber. Clique nos cartões abaixo para marcar as situações com as quais você se identifica:
+                </p>
+            </div>
+
+            <!-- Cards Interativos de Identificação -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="identification-cards">
+                
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Você sabe argumentar bem</h3>
+                    <p class="text-sm text-slate-600">Quando quer convencer seus amigos ou família sobre uma ideia ou passeio, você sempre encontra bons motivos.</p>
+                </div>
+
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Resolve problemas rápido</h3>
+                    <p class="text-sm text-slate-600">Não gosta de ficar parado esperando: se algo dá errado em um trabalho ou evento, você logo pensa em uma saída prática.</p>
+                </div>
+
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Tem visão nas redes sociais</h3>
+                    <p class="text-sm text-slate-600">Percebe facilmente quais anúncios, vídeos ou postagens chamam atenção e o que faz uma loja online parecer confiável.</p>
+                </div>
+
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-ear-listen"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Sabe ouvir as pessoas</h3>
+                    <p class="text-sm text-slate-600">Mesmo quem é mais reservado se destaca em vendas quando sabe escutar com atenção o que o outro realmente precisa.</p>
+                </div>
+
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Gosta de metas e autonomia</h3>
+                    <p class="text-sm text-slate-600">Prefere atividades dinâmicas onde o seu próprio esforço define o resultado, sem ficar preso a uma rotina repetitiva.</p>
+                </div>
+
+                <div onclick="toggleIdentifyCard(this)" class="identify-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-blue-100 hover:border-leda-blue transition-all shadow-sm select-none">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-leda-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <span class="check-badge w-7 h-7 rounded-full border-2 border-slate-200 flex items-center justify-center text-xs text-transparent transition-all">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-slate-900 text-lg mb-2">Pensa em empreender</h3>
+                    <p class="text-sm text-slate-600">Já pensou em vender doces, roupas, serviços digitais ou abrir seu próprio negócio e quer saber como calcular lucro.</p>
+                </div>
+
+            </div>
+
+            <!-- Feedback dinâmico dos cards marcados -->
+            <div id="identify-feedback" class="mt-8 p-4 rounded-2xl bg-leda-dark text-white text-center text-sm sm:text-base font-medium hidden">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. MOTIVOS REAIS PARA ESCOLHER & QUAIS PORTAS O CURSO ABRE            -->
+    <!-- ===================================================================== -->
+    <section id="motivos-portas" class="py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
+                
+                <!-- Conteúdo Prático (7 colunas) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-leda-blue font-bold text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-door-open text-leda-gold"></i>
+                        <span>03. Motivos & Oportunidades Reais</span>
+                    </div>
+
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        Por que escolher este curso e <span class="text-leda-blue">quais portas ele abre</span>?
+                    </h2>
+
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Diferente de formações puramente teóricas, o Técnico em Vendas entrega competências que qualquer empresa precisa para funcionar: gerar receita e manter clientes. Veja as funções concretas que você se prepara para assumir:
+                    </p>
+
+                    <div class="space-y-3.5">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-blue-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-leda-blue text-white flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-slate-900 text-base">Gestor de E-commerce e Vendas Online</h3>
+                                <p class="text-sm text-slate-600">Operar lojas virtuais, catálogos digitais, marketplaces e atendimento comercial pelas redes sociais.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-blue-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-leda-blue text-white flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-slate-900 text-base">Consultor Comercial e Representante (B2B)</h3>
+                                <p class="text-sm text-slate-600">Negociar contratos e fornecimento de produtos ou serviços diretamente entre empresas e distribuidoras.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-blue-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-leda-blue text-white flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-slate-900 text-base">Supervisor de Loja e Equipe de Varejo</h3>
+                                <p class="text-sm text-slate-600">Organizar vitrines, acompanhar metas diárias, treinar atendentes e gerenciar o estoque no comércio local.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-blue-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-leda-blue text-white flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-slate-900 text-base">Empreendedorismo com Base Técnica</h3>
+                                <p class="text-sm text-slate-600">Montar seu próprio negócio sabendo formar preço de venda, controlar custos e divulgar para o público certo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ilustração Vetorial 3: Caminhos e Carreira (5 colunas) -->
+                <div class="lg:col-span-5">
+                    <div class="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <svg viewBox="0 0 380 340" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Base de Formação -->
+                            <rect x="85" y="250" width="210" height="54" rx="16" fill="#063d6e"/>
+                            <text x="190" y="274" text-anchor="middle" fill="#FACC15" font-family="Poppins, sans-serif" font-weight="800" font-size="13">TÉCNICO EM VENDAS</text>
+                            <text x="190" y="292" text-anchor="middle" fill="#DBEAFE" font-family="Inter, sans-serif" font-size="10">Base Prática e Comercial</text>
+
+                            <!-- Linhas de Direção -->
+                            <path d="M190 250 V190" stroke="#0b66b2" stroke-width="5"/>
+                            <path d="M190 190 L80 125" stroke="#0b66b2" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M190 190 L190 95" stroke="#d4af37" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M190 190 L300 125" stroke="#0b66b2" stroke-width="4" stroke-linecap="round"/>
+
+                            <!-- Destino Esquerda: Varejo & Gestão -->
+                            <rect x="20" y="75" width="120" height="52" rx="14" fill="#EFF6FF" stroke="#0b66b2" stroke-width="3"/>
+                            <text x="80" y="98" text-anchor="middle" fill="#063d6e" font-family="Poppins, sans-serif" font-weight="700" font-size="11">VAREJO &</text>
+                            <text x="80" y="114" text-anchor="middle" fill="#0b66b2" font-family="Poppins, sans-serif" font-weight="700" font-size="11">SUPERVISÃO</text>
+
+                            <!-- Destino Centro: Negócio Próprio -->
+                            <rect x="130" y="35" width="120" height="56" rx="14" fill="#0b66b2"/>
+                            <text x="190" y="60" text-anchor="middle" fill="#FFFFFF" font-family="Poppins, sans-serif" font-weight="700" font-size="11">NEGÓCIO</text>
+                            <text x="190" y="76" text-anchor="middle" fill="#FACC15" font-family="Poppins, sans-serif" font-weight="700" font-size="11">PRÓPRIO</text>
+
+                            <!-- Destino Direita: Digital & B2B -->
+                            <rect x="240" y="75" width="120" height="52" rx="14" fill="#EFF6FF" stroke="#0b66b2" stroke-width="3"/>
+                            <text x="300" y="98" text-anchor="middle" fill="#063d6e" font-family="Poppins, sans-serif" font-weight="700" font-size="11">E-COMMERCE</text>
+                            <text x="300" y="114" text-anchor="middle" fill="#0b66b2" font-family="Poppins, sans-serif" font-weight="700" font-size="11">& EMPRESAS</text>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. LOCALIZAÇÃO DA ESCOLA (CENTRO EDUCA MAIS LEDA TAJRA)               -->
+    <!-- ===================================================================== -->
+    <section id="localizacao" class="py-16 lg:py-20 bg-leda-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-yellow-400/20 text-yellow-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Onde Estamos</span>
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-3xl font-extrabold">
+                        CENTRO EDUCA MAIS LEDA TAJRA
+                    </h2>
+                    <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                        Localizado em <strong>Santa Helena - MA</strong>, o Centro Educa Mais Leda Tajra oferece Ensino Médio em Tempo Integral integrado à Educação Profissional, preparando estudantes com teoria e prática para os desafios reais do mercado.
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Centro+Educa+Mais+Leda+Tajra+Santa+Helena+MA" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="px-5 py-3 rounded-xl bg-white text-leda-dark font-display font-bold text-sm hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-location-dot text-leda-blue"></i>
+                            <span>Abrir no Google Maps</span>
+                        </a>
+                        <a href="https://www.instagram.com/educamaisledatajra?bqrl=MWpkbnEyemZrbmp1aA==" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="px-5 py-3 rounded-xl bg-leda-blue hover:bg-blue-500 text-white border border-white/25 font-display font-bold text-sm transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                            <span>@educamaisledatajra</span>
+                        </a>
+                        <a href="https://www.bing.com/search?q=centro+educa+mais+leda+tajra&form=EX0050&refig=6b0249041d2948b1b371f4e25c281a68&pc=U531#&shtp=GetUrl&shid=ddb8354c-0e41-4c73-a929-3a7a56e97e39" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-blue-100 font-semibold text-xs sm:text-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-compass"></i>
+                            <span>Ver Localização (Bing)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cartão Visual do Prédio / Mapa Estilizado -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-slate-900 rounded-2xl p-5 shadow-xl border-2 border-leda-gold">
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="image_60f8a9.png" alt="Logo Escola" class="w-12 h-12 rounded-full object-cover border border-leda-gold bg-[#0b66b2]"
+                                 onerror="this.src='https://placehold.co/100x100/0b66b2/FFFFFF?text=LT'">
+                            <div>
+                                <p class="font-display font-extrabold text-sm text-leda-dark">CENTRO EDUCA MAIS LEDA TAJRA</p>
+                                <p class="text-xs text-slate-500">Santa Helena - Maranhão</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl bg-blue-50 p-4 border border-blue-100 text-center space-y-2">
+                            <div class="w-10 h-10 rounded-full bg-leda-blue text-white flex items-center justify-center mx-auto animate-bounce">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-700">Clique no logotipo no canto superior da tela a qualquer momento para alternar entre o Mapa e o Instagram!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 8. JOGO INTERATIVO FINAL: DESAFIO DO NEGOCIADOR (QUIZ PONTUADO)       -->
+    <!-- ===================================================================== -->
+    <section id="jogo-vendas" class="py-20 lg:py-24 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="bg-white rounded-3xl shadow-2xl border-2 border-blue-100 overflow-hidden">
+                
+                <div class="bg-leda-blue px-6 py-8 sm:px-10 text-white text-center">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-white/15 text-yellow-300 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-trophy mr-1"></i> Mini-Game da Feira das Profissões
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-3xl font-extrabold">
+                        Desafio do Negociador: Teste seus Conhecimentos!
+                    </h2>
+                    <p class="text-blue-100 text-sm sm:text-base mt-1">
+                        Enfrente 4 situações reais do dia a dia de um Técnico em Vendas, acumule pontos e veja sua patente comercial!
+                    </p>
+                </div>
+
+                <!-- Área do Jogo -->
+                <div id="game-container" class="p-6 sm:p-10">
+                    <!-- Renderizado via JavaScript -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 9. RODAPÉ                                                             -->
+    <!-- ===================================================================== -->
+    <footer class="bg-slate-950 text-white pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-leda-gold bg-[#0b66b2] shrink-0">
+                        <img src="image_60f8a9.png" alt="Logo Centro Educa Mais Leda Tajra" class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/150x150/0b66b2/FFFFFF?text=LEDA+TAJRA'">
+                    </div>
+                    <div>
+                        <h3 class="font-display font-extrabold text-base sm:text-lg text-white">
+                            CENTRO EDUCA MAIS LEDA TAJRA
+                        </h3>
+                        <p class="text-xs sm:text-sm text-blue-300">
+                            Santa Helena - MA • Feira das Profissões • Curso Técnico em Vendas
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Centro+Educa+Mais+Leda+Tajra+Santa+Helena+MA" target="_blank" rel="noopener noreferrer"
+                       class="px-4 py-2 rounded-xl bg-white/10 hover:bg-leda-blue text-xs font-bold transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-yellow-300"></i> Google Maps
+                    </a>
+                    <a href="https://www.instagram.com/educamaisledatajra?bqrl=MWpkbnEyemZrbmp1aA==" target="_blank" rel="noopener noreferrer"
+                       class="px-4 py-2 rounded-xl bg-white/10 hover:bg-pink-600 text-xs font-bold transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-instagram text-yellow-300"></i> Instagram
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center text-xs text-slate-400">
+                <p>© 2026 CENTRO EDUCA MAIS LEDA TAJRA — Apresentação Escolar da Feira das Profissões.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: SPLASH SCREEN, MENU LOGO, CARDS E JOGO FINAL              -->
+    <!-- ===================================================================== -->
+    <script>
+        // 1. Splash Screen
+        const splashScreen = document.getElementById('splash-screen');
+        const splashProgress = document.getElementById('splash-progress');
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (splashProgress) splashProgress.style.width = '100%';
+            }, 150);
+
+            setTimeout(() => {
+                closeSplash();
+            }, 2500);
+        });
+
+        function closeSplash() {
+            if (splashScreen && !splashScreen.classList.contains('hidden-splash')) {
+                splashScreen.classList.add('hidden-splash');
+            }
+        }
+
+        // 2. Menu Dropdown ao clicar na Logo do Canto Superior Esquerdo
+        const logoDropdown = document.getElementById('logo-dropdown');
+        const logoActionBtn = document.getElementById('logo-action-btn');
+
+        function toggleLogoMenu() {
+            logoDropdown.classList.toggle('hidden');
+        }
+
+        // Fecha o dropdown da logo se clicar fora dele
+        document.addEventListener('click', (event) => {
+            if (!logoActionBtn.contains(event.target) && !logoDropdown.contains(event.target)) {
+                logoDropdown.classList.add('hidden');
+            }
+        });
+
+        // 3. Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // 4. Animação de Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 5. Interação dos Cards "Você se identifica?"
+        function toggleIdentifyCard(card) {
+            card.classList.toggle('border-leda-blue');
+            card.classList.toggle('bg-blue-50/60');
+            const badge = card.querySelector('.check-badge');
+            badge.classList.toggle('bg-leda-blue');
+            badge.classList.toggle('border-leda-blue');
+            badge.classList.toggle('text-white');
+            badge.classList.toggle('text-transparent');
+
+            const selectedCount = document.querySelectorAll('.identify-card.border-leda-blue').length;
+            const feedbackBox = document.getElementById('identify-feedback');
+
+            if (selectedCount > 0) {
+                feedbackBox.classList.remove('hidden');
+                if (selectedCount === 1) {
+                    feedbackBox.innerHTML = `<i class="fa-solid fa-star text-yellow-300 mr-2"></i>Você marcou <strong>1 ponto em comum</strong>! Já é um ótimo começo para desenvolver técnicas comerciais.`;
+                } else if (selectedCount <= 3) {
+                    feedbackBox.innerHTML = `<i class="fa-solid fa-fire text-yellow-300 mr-2"></i>Você marcou <strong>${selectedCount} situações</strong>! Você já pratica atitudes essenciais de um Técnico em Vendas.`;
+                } else {
+                    feedbackBox.innerHTML = `<i class="fa-solid fa-crown text-yellow-300 mr-2"></i>Incrível! Você se identificou com <strong>${selectedCount} de 6 pontos</strong> — tem perfil natural para liderar negociações!`;
+                }
+            } else {
+                feedbackBox.classList.add('hidden');
+            }
+        }
+
+        // 6. Mini-Game / Quiz Interativo Final ("Desafio do Negociador")
+        const gameQuestions = [
+            {
+                scenario: "Situação 1 — Atendimento Consultivo",
+                question: "Um cliente entra na loja dizendo: 'Só estou dando uma olhadinha'. Qual é a melhor atitude de um Técnico em Vendas?",
+                options: [
+                    { text: "Insistir imediatamente para ele levar o produto mais caro da vitrine.", correct: false, explanation: "Insistir sem ouvir afasta o cliente. O técnico primeiro cria confiança." },
+                    { text: "Deixá-lo à vontade, mostrar-se disponível e fazer uma pergunta aberta para entender o que ele procura.", correct: true, explanation: "Exato! Respeitar o espaço e fazer perguntas inteligentes ajuda a descobrir a real necessidade do cliente." },
+                    { text: "Ignorar o cliente e mexer no celular até ele chamar.", correct: false, explanation: "Falta de atenção faz a loja perder vendas e passa má impressão." }
+                ]
+            },
+            {
+                scenario: "Situação 2 — Gestão e Organização",
+                question: "Para que serve o controle de estoque que você aprende no curso Técnico em Vendas?",
+                options: [
+                    { text: "Apenas para deixar as caixas organizadas por cor.", correct: false, explanation: "Vai muito além da estética: envolve controle financeiro e reposição." },
+                    { text: "Para evitar perder vendas por falta de produto e impedir prejuízo com mercadoria parada.", correct: true, explanation: "Perfeito! Saber exatamente o que entra e o que sai garante o lucro e a entrega rápida." },
+                    { text: "Não faz parte da rotina de quem trabalha com vendas.", correct: false, explanation: "Faz sim! Vender algo que não existe no estoque gera cancelamento e insatisfação." }
+                ]
+            },
+            {
+                scenario: "Situação 3 — Vendas Digitais",
+                question: "Um cliente manda mensagem no Instagram da loja perguntando o preço de um produto. Como converter essa conversa em venda?",
+                options: [
+                    { text: "Responder apenas o valor seco ('R$ 80') e encerrar o assunto.", correct: false, explanation: "Responder só o preço não mostra o valor nem os benefícios do produto." },
+                    { text: "Responder com simpatia, explicar os benefícios do produto, formas de pagamento e perguntar como ele prefere receber.", correct: true, explanation: "Isso aí! No atendimento digital, agilidade, clareza e condução da conversa fazem toda a diferença." },
+                    { text: "Demorar 3 dias para responder para parecer que a loja está muito ocupada.", correct: false, explanation: "Na internet, quem demora a responder perde o cliente para o concorrente em minutos." }
+                ]
+            },
+            {
+                scenario: "Situação 4 — Pós-Venda",
+                question: "A venda foi concluída e o cliente já pagou. O trabalho do Técnico em Vendas acabou?",
+                options: [
+                    { text: "Não! O pós-venda acompanha a satisfação do cliente para que ele volte a comprar e indique a empresa.", correct: true, explanation: "Mandou bem! Fidelizar um cliente custa muito menos do que conquistar um novo do zero." },
+                    { text: "Sim, depois que o dinheiro entra no caixa não precisa mais falar com o cliente.", correct: false, explanation: "Esquecer o cliente após a compra impede a fidelização." },
+                    { text: "Só deve entrar em contato se o cliente reclamar nas redes sociais.", correct: false, explanation: "O bom técnico se antecipa para garantir uma ótima experiência." }
+                ]
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+        let answered = false;
+        const gameContainer = document.getElementById('game-container');
+
+        function renderGame() {
+            if (currentQ < gameQuestions.length) {
+                const item = gameQuestions[currentQ];
+                answered = false;
+
+                gameContainer.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-leda-blue font-bold text-xs uppercase">
+                            ${item.scenario}
+                        </span>
+                        <span class="font-display font-bold text-sm text-leda-dark">
+                            Pontuação: <span class="text-leda-blue">${score}</span> / ${gameQuestions.length * 100} pts
+                        </span>
+                    </div>
+
+                    <div class="w-full h-2 bg-blue-100 rounded-full mb-6 overflow-hidden">
+                        <div class="h-full bg-leda-blue transition-all duration-300" style="width: ${((currentQ + 1) / gameQuestions.length) * 100}%"></div>
+                    </div>
+
+                    <h3 class="font-display text-lg sm:text-2xl font-bold text-slate-900 mb-6 leading-snug">
+                        ${item.question}
+                    </h3>
+
+                    <div id="options-list" class="space-y-3">
+                        ${item.options.map((opt, idx) => `
+                            <button onclick="checkAnswer(${idx})" id="opt-btn-${idx}"
+                                class="w-full text-left p-4 sm:p-5 rounded-2xl border-2 border-blue-100 hover:border-leda-blue hover:bg-blue-50/60 transition-all flex items-center justify-between gap-4 cursor-pointer">
+                                <span class="text-sm sm:text-base font-medium text-slate-800">${opt.text}</span>
+                                <span class="w-8 h-8 rounded-full bg-blue-50 text-leda-blue flex items-center justify-center shrink-0 font-bold text-xs">
+                                    ${String.fromCharCode(65 + idx)}
+                                </span>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="answer-feedback" class="hidden mt-6 p-4 rounded-2xl border text-sm sm:text-base"></div>
+                `;
+            } else {
+                // Tela Final de Pontuação do Jogo
+                let rankTitle = "";
+                let rankBadge = "";
+                let rankMsg = "";
+
+                if (score === 400) {
+                    rankTitle = "Mestre da Negociação!";
+                    rankBadge = "Pontuação Máxima: 400 / 400 pts";
+                    rankMsg = "Você acertou todas as decisões comerciais! Já domina a mentalidade estratégica que desenvolvemos no curso Técnico em Vendas do Centro Educa Mais Leda Tajra.";
+                } else if (score >= 200) {
+                    rankTitle = "Estrategista em Evolução!";
+                    rankBadge = `Pontuação: ${score} / 400 pts`;
+                    rankMsg = "Ótimo desempenho! Você já tem boa visão sobre atendimento e mercado, e com as aulas práticas do curso vai afiar ainda mais suas técnicas.";
+                } else {
+                    rankTitle = "Explorador Comercial!";
+                    rankBadge = `Pontuação: ${score} / 400 pts`;
+                    rankMsg = "Viu como vender vai muito além do improviso? É exatamente para ensinar essas técnicas passo a passo que existe o curso Técnico em Vendas!";
+                }
+
+                gameContainer.innerHTML = `
+                    <div class="text-center py-4 space-y-5">
+                        <div class="w-20 h-20 rounded-full bg-yellow-100 text-amber-600 flex items-center justify-center mx-auto text-3xl shadow-inner">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-leda-dark text-xs font-extrabold uppercase tracking-wider">
+                            ${rankBadge}
+                        </span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+                            ${rankTitle}
+                        </h3>
+                        <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+                            ${rankMsg}
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                            <button onclick="restartGame()" class="px-6 py-3.5 rounded-xl bg-leda-blue text-white font-display font-bold text-sm hover:bg-leda-dark transition-all cursor-pointer flex items-center gap-2 shadow-lg">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span>Jogar Novamente</span>
+                            </button>
+                            <a href="#inicio" class="px-6 py-3.5 rounded-xl bg-slate-100 text-slate-700 font-display font-bold text-sm hover:bg-slate-200 transition-all">
+                                Voltar ao Início
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const item = gameQuestions[currentQ];
+            const chosen = item.options[selectedIndex];
+            const feedbackEl = document.getElementById('answer-feedback');
+
+            item.options.forEach((opt, idx) => {
+                const btn = document.getElementById(`opt-btn-${idx}`);
+                btn.classList.remove('hover:border-leda-blue', 'hover:bg-blue-50/60', 'cursor-pointer');
+                if (opt.correct) {
+                    btn.classList.add('border-emerald-500', 'bg-emerald-50');
+                } else if (idx === selectedIndex && !opt.correct) {
+                    btn.classList.add('border-rose-400', 'bg-rose-50');
+                } else {
+                    btn.classList.add('opacity-60');
+                }
+            });
+
+            if (chosen.correct) {
+                score += 100;
+                feedbackEl.className = "mt-6 p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4";
+                feedbackEl.innerHTML = `
+                    <div>
+                        <p class="font-display font-bold text-emerald-700 mb-1"><i class="fa-solid fa-circle-check mr-1"></i> +100 pontos! Resposta Certa</p>
+                        <p class="text-sm">${chosen.explanation}</p>
+                    </div>
+                    <button onclick="nextQuestion()" class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-display font-bold text-sm hover:bg-emerald-700 shrink-0 cursor-pointer">
+                        Próxima <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                `;
+            } else {
+                feedbackEl.className = "mt-6 p-5 rounded-2xl border-2 border-amber-200 bg-amber-50 text-amber-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4";
+                feedbackEl.innerHTML = `
+                    <div>
+                        <p class="font-display font-bold text-amber-800 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> Dica do Técnico em Vendas:</p>
+                        <p class="text-sm">${chosen.explanation}</p>
+                    </div>
+                    <button onclick="nextQuestion()" class="px-5 py-2.5 rounded-xl bg-leda-blue text-white font-display font-bold text-sm hover:bg-leda-dark shrink-0 cursor-pointer">
+                        Continuar <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                `;
+            }
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            renderGame();
+        }
+
+        function restartGame() {
+            currentQ = 0;
+            score = 0;
+            renderGame();
+        }
+
+        // Inicia o jogo
+        renderGame();
+    </script>
+</body>
+</html>
